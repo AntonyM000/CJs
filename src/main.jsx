@@ -5,6 +5,7 @@ import './index.css'
 import { AuthProvider } from './contexts/AuthContext.jsx'
 import { DataProvider } from './contexts/DataContext.jsx'
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>

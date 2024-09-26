@@ -9,12 +9,15 @@ import Menu from './pages/Menu'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import AdminPanel from './pages/AdminPanel'
+import { SpeedInsights } from "@vercel/speed-insights/react"
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+    <SpeedInsights/>
       <BrowserRouter>
       <Routes>
         <Route path='/login' element={<Login />}/>
