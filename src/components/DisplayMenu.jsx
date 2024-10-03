@@ -5,7 +5,15 @@ import { Link } from 'react-router-dom';
 const DisplayMenu = () => {
 
     
-  const { loading, error, products } = useData();
+  const { loading, error, products,combos } = useData();
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+
 
   return (
     <div>
@@ -36,7 +44,7 @@ const DisplayMenu = () => {
               {tweet.imageUrl && (
                 <div className="md:flex-shrink pr-6 pt-3">
                   <img
-                    className="rounded-lg w-full h-64"
+                    className="rounded-lg w-52"
                     src={tweet.imageUrl}
                     alt="Tweet Media"
                   />
@@ -47,6 +55,28 @@ const DisplayMenu = () => {
           </div>
           
         ))}
+
+<div>
+      <h3>Breakfast Combos</h3>
+      {combos.length > 0 ? (
+        <ul>
+          {combos.map((product) => (
+            <li key={product.id}  className="flex flex-col mb-4">
+              
+              <strong className="text-lg">{product.name}</strong> 
+              <p>Description: {product.Description}</p>
+                <p>Price: KSH {product.value}</p>
+                {product.imageUrl && (
+                  <img className="rounded-lg w-52 mt-2" src={product.imageUrl} alt={product.name} />
+                )}
+
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No combos found.</p>
+      )}
+    </div>
     </div>
   )
 }
